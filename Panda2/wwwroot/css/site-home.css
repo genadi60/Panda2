@@ -1,0 +1,16 @@
+﻿main .home-content {
+    display: block;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    color: #ffffff;
+    padding: 3rem;
+}
+
+main .home-content .header {
+    font-weight: normal;
+    border-bottom: 0.3rem solid rgb(101,101,101);
+}
+
+main .home-content p {
+    font-size: 1.3rem;
+}

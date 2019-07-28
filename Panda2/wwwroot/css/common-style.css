@@ -1,0 +1,147 @@
+﻿a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    
+    margin-bottom: 60px;
+}
+
+.main-container .image-holder {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.main-container .image-holder img {
+    display: block;
+    width: 6em;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.bg-panda {
+    background-color: #202020;
+}
+
+.text-panda {
+    color: #202020;
+}
+
+.border-panda {
+    border: 2px solid #202020;
+    border-radius: 7px;
+}
+
+.nav-link-white {
+    color: #FFFFFF;
+}
+
+.hr-2 {
+    height: 2px;
+}
+
+/*a {
+    text-underline: none;
+}*/
+
+    a:hover {
+        outline: none;
+        text-decoration: none;
+    }
+
+tr {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+textarea {
+    resize: none;
+}
+
+.create-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.justify-content-between {
+    
+    flex-wrap: wrap;
+}
+
+.justify-content-around {
+    
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.justify-content-evenly {
+    
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.w-50,
+select,
+input {
+    min-width: 160px;
+}
+ 
+.w-48 {
+
+    width: 48%; 
+    min-width: 160px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.d-block {
+    min-width: 480px;
+}
+
+h3 {
+    font-weight: normal;
+}
+
+td > p {
+    text-align: start;
+}
+
+.header {
+    padding-bottom: 2rem;
+    border-bottom: 0.2rem solid #202020;
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,23 @@
+﻿.identity-container {
+    margin: 0 auto;
+    width: 50vw;
+}
+
+.identity-container h1,
+.identity-container p,
+.identity-container .button-holder {
+    text-align: center;
+}
+
+.identity-container > .form-holder {
+    display: block;
+}
+
+.identity-container > .form-holder label {
+    font-weight: bold;
+}
+
+.identity-container .btn {
+    background-color: #000000;
+    color: #ffffff;
+}

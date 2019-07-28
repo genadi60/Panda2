@@ -1,0 +1,102 @@
+﻿@model Panda2.Models.ViewModels.AdministratorViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div>
+    <h1 class="header text-center text-panda">Hello Administrator, @Model.Name!</h1>
+
+    @if (Model.Pending.Any() || Model.Shipped.Any() || Model.Delivered.Any())
+    {
+        <div class="container-fluid row d-flex justify-content-around">
+            @if (Model.Pending.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Pending</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < Model.Pending.Count(); index++)
+                            {
+                                var package = Model.Pending.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        <td class="col-md-4"><a asp-controller="Packages" asp-action="Details" asp-route-id="@package.Id" class="btn bg-panda text-white">Details</a></td>
+                                    </tr>
+                                </table>
+                                @if (index < Model.Pending.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Shipped.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Shipped</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < Model.Shipped.Count(); index++)
+                            {
+                                var package = Model.Shipped.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        <td class="col-md-4"><a asp-controller="Packages" asp-action="Details" asp-route-id="@package.Id" class="btn bg-panda text-white">Details</a></td>
+                                    </tr>
+                                </table>
+                                @if (index < Model.Shipped.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Delivered.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Delivered</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < Model.Delivered.Count(); index++)
+                            {
+                                var package = Model.Delivered.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        @if (package.Recipient.Equals(Model.Name) && package.Status.Equals("Delivered"))
+                                        {
+                                            <td class="col-md-4"><a asp-controller="Receipts" asp-action="Create" asp-route-id="@package.Id" class="btn bg-panda text-white">Acquire</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="col-md-4"><a asp-controller="Packages" asp-action="Details" asp-route-id="@package.Id" class="btn bg-panda text-white">Details</a></td>
+                                        }
+
+                                    </tr>
+                                </table>
+                                @if (index < Model.Delivered.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

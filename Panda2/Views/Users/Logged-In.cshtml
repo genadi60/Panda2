@@ -1,0 +1,103 @@
+﻿@model Panda2.Models.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    
+    var pending = Model.Packages.Where(p => p.Status.Equals("Pending")).ToList();
+    var shipped = Model.Packages.Where(p => p.Status.Equals("Shipped")).ToList();
+    var delivered = Model.Packages.Where(p => p.Status.Equals("Delivered")).ToList();
+}
+
+
+
+<div >
+    <h1 class="header text-center text-panda">Hello, @Model.Username!</h1>
+
+    @if (Model.Packages.Any())
+    {
+        <div class="container-fluid row d-flex justify-content-around">
+            @if (pending.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Pending</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < pending.Count(); index++)
+                            {
+                                var package = pending.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        <td class="col-md-4"><a asp-controller="Packages" asp-action="Details" asp-route-id="@package.Id" class="btn bg-panda text-white">Details</a></td>
+                                    </tr>
+                                </table>
+                                @if (index < pending.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (shipped.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Shipped</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < shipped.Count(); index++)
+                            {
+                                var package = shipped.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        <td class="col-md-4"><a href="/packages/details?id=@package.Id" class="btn bg-panda text-white">Details</a></td>
+                                    </tr>
+                                </table>
+                                @if (index < shipped.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (delivered.Any())
+            {
+                <div>
+                    <h2 class="text-panda text-center">Delivered</h2>
+                    <div class="card border-panda">
+                        <div class="card-body">
+                            @for (var index = 0; index < delivered.Count(); index++)
+                            {
+                                var package = delivered.ElementAt(index);
+                                <table>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            <p class="card-text">@package.Description</p>
+                                        </td>
+                                        <td class="col-md-4">
+                                            <form method="post" asp-controller="Receipts" asp-action="Create" >
+                                                <button  class="btn bg-panda text-white" type="submit" name="id" value="@package.Id">Acquire</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                                @if (index < delivered.Count() - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

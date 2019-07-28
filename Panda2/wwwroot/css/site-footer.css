@@ -1,0 +1,14 @@
+﻿.footer {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    background: linear-gradient(90deg, #202020 0%, rgba(0,0,0,0.6) 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+}
+
+.footer p {
+    margin-bottom: 0;
+}

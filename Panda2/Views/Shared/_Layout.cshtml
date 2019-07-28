@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Panda2</title>
+    <link rel="shortcut icon" href="~/css/Images/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="~/css/Images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="~/css/Images/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="~/css/Images/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/css/Images/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="~/css/Images/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/css/Images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/css/Images/favicon-16.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="~/css/Images/favicon-144.png">
+    <meta name="msapplication-config" content="~/css/Images/browserconfig.xml">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
+                <div class="navigation-container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PANDA</a>
+                    <img src="~/css/Images/favicon-32.png" alt="panda-icon" />
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
+                            <partial name="_AdminLoginPartial" />
+                        </div>
+                    }
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="main-container">
+            @RenderBody()
+        </main>
+       
+        <footer class="footer">
+            <p>&copy; CopyRight: Genadi Web Design Studio 2018 - 2019. All rights reserved.</p>
+        </footer>
+        
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+            </script>
+        </environment>
+        <script src="~/js/site.js" asp-append-version="true">
+        </script>
+
+        @RenderSection("Scripts", required: false)
+    </div>
+</body>
+
+</html>
