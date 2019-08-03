@@ -71,10 +71,6 @@ body {
     height: 2px;
 }
 
-/*a {
-    text-underline: none;
-}*/
-
 a:hover {
     outline: none;
     text-decoration: none;
