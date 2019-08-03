@@ -75,10 +75,10 @@ body {
     text-underline: none;
 }*/
 
-    a:hover {
-        outline: none;
-        text-decoration: none;
-    }
+a:hover {
+    outline: none;
+    text-decoration: none;
+}
 
 tr {
     margin-right: 0 !important;

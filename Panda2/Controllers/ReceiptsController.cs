@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MediaBrowser.Controller.Net;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Panda2.Models;
+using Panda2.Models.ViewModels;
 using Panda2.Services.Contracts;
 
 namespace Panda2.Controllers
@@ -16,6 +18,7 @@ namespace Panda2.Controllers
             _userManager = userManager;
         }
 
+        [Authenticated]
         public IActionResult Index()
         {
             var id = _userManager.GetUserId(User);
@@ -23,22 +26,33 @@ namespace Panda2.Controllers
             return View(model);
         }
 
+        [Authenticated]
         public IActionResult Details(string id)
         {
             var model = _receiptsService.GetReceiptViewModel(id);
-            return View(model);
+            if (model != null &&  model.Recipient.Equals(User.Identity.Name))
+            {
+                return View(model);
+            }
+            var errorModel = new ErrorViewModel();
+            errorModel.ErrorMessage = "Access denied.";
+            return RedirectToAction("Error", "Home", errorModel);
         }
 
+        [Authenticated]
         public IActionResult Create(string id)
         {
-            bool isCreated = _receiptsService.Create(id);
+            var userId = _userManager.GetUserId(User);
+            bool isCreated = _receiptsService.Create(id, userId);
 
             if (isCreated)
             {
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index", "Home");
+            var errorModel = new ErrorViewModel();
+            errorModel.ErrorMessage = "Access denied.";
+            return RedirectToAction("Error", "Home", errorModel);
         }
     }
 }

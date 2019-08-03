@@ -36,13 +36,13 @@ namespace Panda2.Services
                         })
                         .ToList()
                 })
-                .FirstOrDefault(u => u.Id.Equals(id));
+                .SingleOrDefault(u => u.Id.Equals(id));
             return model;
         }
 
-        public bool Create(string id)
+        public bool Create(string id, string userId)
         {
-            var package = _context.Packages.Include(p => p.Recipient).FirstOrDefault(p => p.Id.Equals(id));
+            var package = _context.Packages.Include(p => p.Recipient).SingleOrDefault(p => p.Id.Equals(id) && p.RecipientId.Equals(userId));
 
             if (package == null)
             {
@@ -58,7 +58,7 @@ namespace Panda2.Services
                 Package = package
             };
 
-            var status = _context.Statuses.FirstOrDefault(s => s.Name.Equals("Acquired"));
+            var status = _context.Statuses.SingleOrDefault(s => s.Name.Equals("Acquired"));
 
             package.Status = status;
 
@@ -86,7 +86,7 @@ namespace Panda2.Services
                     Recipient = r.Recipient.UserName,
                     Fee = r.Fee
                 })
-                .FirstOrDefault(r => r.Id.Equals(id));
+                .SingleOrDefault(r => r.Id.Equals(id));
 
             return model;
         }

@@ -1,7 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Net;
+using MediaBrowser.Controller.Net;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Panda2.Models;
 using Panda2.Services.Contracts;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Http.Features.Authentication;
 
 namespace Panda2.Controllers
 {
@@ -29,6 +36,8 @@ namespace Panda2.Controllers
         }
 
         [HttpGet]
+        [Authenticated]
+        
         
         public IActionResult Logout()
         {

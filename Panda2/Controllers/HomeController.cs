@@ -30,9 +30,10 @@ namespace Panda2.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(ErrorViewModel model)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            model.RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            return View(model);
         }
     }
 }

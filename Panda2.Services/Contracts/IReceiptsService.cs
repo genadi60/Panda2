@@ -11,6 +11,6 @@ namespace Panda2.Services.Contracts
 
         ReceiptViewModel GetReceiptViewModel(string id);
 
-        bool Create(string id);
+        bool Create(string id, string userId);
     }
 }

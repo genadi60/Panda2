@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediaBrowser.Controller.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Panda2.Models.InputModels;
+using Panda2.Models.ViewModels;
 using Panda2.Services.Contracts;
 
 namespace Panda2.Controllers
@@ -15,24 +18,34 @@ namespace Panda2.Controllers
             _usersService = usersService;
         }
 
+        [Authorize]
         public IActionResult Details(string id)
         {
             var model = _packagesService.GetPackage(id);
-            return View(model);
+            if (model != null && (User.IsInRole("Administrator") || model.Recipient.Equals(User.Identity.Name)))
+            {
+                return View(model);
+            }
+            var errorModel = new ErrorViewModel();
+            errorModel.ErrorMessage = "Access denied.";
+            return RedirectToAction("Error", "Home", errorModel);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Pending()
         {
             var model = _usersService.GetAdministratorViewModel();
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Shipped()
         {
             var model = _usersService.GetAdministratorViewModel();
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delivered()
         {
             var model = _usersService.GetAdministratorViewModel();
@@ -40,12 +53,14 @@ namespace Panda2.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create([FromForm]PackageInputModel model)
         {
             if (!ModelState.IsValid)
@@ -62,6 +77,7 @@ namespace Panda2.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Ship(string id)
         {
             var shipped = _packagesService.Ship(id);
@@ -74,6 +90,7 @@ namespace Panda2.Controllers
             return View("Pending");
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Deliver(string id)
         {
             var delivered = _packagesService.Deliver(id);
@@ -86,6 +103,7 @@ namespace Panda2.Controllers
             return View("Shipped");
         }
 
+        [Authenticated]
         public IActionResult Acquire(string id)
         {
             var acquired = _packagesService.Acquire(id);
