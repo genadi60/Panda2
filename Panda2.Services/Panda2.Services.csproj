@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\ASP.NET-MVC-Template-master\ASP.NET Core\Services\PandaTwo.Services.Mapping\Panda2.Services.Mapping.csproj" />
     <ProjectReference Include="..\Panda2.Data\Panda2.Data.csproj" />
-    <ProjectReference Include="..\Panda2.Models\Panda2.Models.csproj" />
+    <ProjectReference Include="..\Panda2.Models\Panda2.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

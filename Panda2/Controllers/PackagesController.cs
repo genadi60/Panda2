@@ -1,9 +1,10 @@
 ﻿using MediaBrowser.Controller.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Panda2.Models.InputModels;
-using Panda2.Models.ViewModels;
-using Panda2.Services.Contracts;
+using Panda2.Data.Models.InputModels;
+using Panda2.Data.Models.ViewModels;
+using Panda2.Services.Data;
+using Panda2.Services.Data.Contracts;
 
 namespace Panda2.Controllers
 {
@@ -21,34 +22,33 @@ namespace Panda2.Controllers
         [Authorize]
         public IActionResult Details(string id)
         {
-            var model = _packagesService.GetPackage(id);
+            var model = _packagesService.GetPackage<PackageViewModel>(id);
             if (model != null && (User.IsInRole("Administrator") || model.Recipient.Equals(User.Identity.Name)))
             {
                 return View(model);
             }
-            var errorModel = new ErrorViewModel();
-            errorModel.ErrorMessage = "Access denied.";
+            var errorModel = new ErrorViewModel { ErrorMessage = "Access denied." };
             return RedirectToAction("Error", "Home", errorModel);
         }
 
         [Authorize(Roles = "Administrator")]
         public IActionResult Pending()
         {
-            var model = _usersService.GetAdministratorViewModel();
+            var model = _usersService.GetAdministratorViewModel<PackageViewModel>();
             return View(model);
         }
 
         [Authorize(Roles = "Administrator")]
         public IActionResult Shipped()
         {
-            var model = _usersService.GetAdministratorViewModel();
+            var model = _usersService.GetAdministratorViewModel<PackageViewModel>();
             return View(model);
         }
 
         [Authorize(Roles = "Administrator")]
         public IActionResult Delivered()
         {
-            var model = _usersService.GetAdministratorViewModel();
+            var model = _usersService.GetAdministratorViewModel<PackageViewModel>();
             return View(model);
         }
 
@@ -69,7 +69,7 @@ namespace Panda2.Controllers
             }
             var isCreated = _packagesService.Create(model);
 
-            if (isCreated == 1)
+            if (isCreated.Result == 1)
             {
                 return Redirect("/Home/Index");
             }
@@ -82,7 +82,7 @@ namespace Panda2.Controllers
         {
             var shipped = _packagesService.Ship(id);
 
-            if (shipped == 1)
+            if (shipped.Result == 1)
             {
                 return RedirectToAction("Shipped");
             }
@@ -95,7 +95,7 @@ namespace Panda2.Controllers
         {
             var delivered = _packagesService.Deliver(id);
 
-            if (delivered == 1)
+            if (delivered.Result == 1)
             {
                 return RedirectToAction("Delivered");
             }
@@ -108,7 +108,7 @@ namespace Panda2.Controllers
         {
             var acquired = _packagesService.Acquire(id);
 
-            if (acquired == 1)
+            if (acquired.Result == 1)
             {
                 return RedirectToAction("Create", "Receipts", id);
             }

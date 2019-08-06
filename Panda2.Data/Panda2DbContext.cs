@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Panda2.Models;
+using Panda2.Data.Models;
 
 namespace Panda2.Data
 {

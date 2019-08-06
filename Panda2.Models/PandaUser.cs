@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
-namespace Panda2.Models
+namespace Panda2.Data.Models
 {
     public class PandaUser : IdentityUser
     {
@@ -15,10 +15,10 @@ namespace Panda2.Models
 
         [Required]
         public string RoleId { get; set; }
-        public PandaUserRole Role { get; set; }
+        public virtual PandaUserRole Role { get; set; }
 
-        public ICollection<Package> Packages { get; set; }
+        public virtual ICollection<Package> Packages { get; set; }
 
-        public ICollection<Receipt> Receipts { get; set; }
+        public virtual ICollection<Receipt> Receipts { get; set; }
     }
 }

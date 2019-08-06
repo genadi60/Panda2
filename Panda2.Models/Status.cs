@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Panda2.Data.Common.Models;
 
-namespace Panda2.Models
+namespace Panda2.Data.Models
 {
-    public class Status
+    public class Status : BaseModel<int>
     {
         public Status()
         {
@@ -13,8 +14,6 @@ namespace Panda2.Models
         {
             this.Name = name;
         }
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
     }

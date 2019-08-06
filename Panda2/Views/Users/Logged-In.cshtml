@@ -1,11 +1,11 @@
-﻿@model Panda2.Models.ViewModels.UserViewModel
+﻿@model Panda2.Data.Models.ViewModels.UserViewModel
 
 @{
     ViewData["Title"] = "Home Page";
     
-    var pending = Model.Packages.Where(p => p.Status.Equals("Pending")).ToList();
-    var shipped = Model.Packages.Where(p => p.Status.Equals("Shipped")).ToList();
-    var delivered = Model.Packages.Where(p => p.Status.Equals("Delivered")).ToList();
+    var pending = Model.Packages.Where(p => p.StatusName.Equals("Pending")).ToList();
+    var shipped = Model.Packages.Where(p => p.StatusName.Equals("Shipped")).ToList();
+    var delivered = Model.Packages.Where(p => p.StatusName.Equals("Delivered")).ToList();
 }
 
 

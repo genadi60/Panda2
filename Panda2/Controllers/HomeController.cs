@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Panda2.Models.ViewModels;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
-using Panda2.Models;
+using Panda2.Data.Models;
+using Panda2.Data.Models.ViewModels;
 
 namespace Panda2.Controllers
 {

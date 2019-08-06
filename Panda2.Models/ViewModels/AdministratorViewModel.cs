@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
+using Panda2.Services.Mapping;
 
-namespace Panda2.Models.ViewModels
+namespace Panda2.Data.Models.ViewModels
 {
     public class AdministratorViewModel
     {
@@ -13,10 +15,10 @@ namespace Panda2.Models.ViewModels
 
         public string Name { get; set; }
 
-        public ICollection<PackageViewModel> Pending { get; set; }
+        public virtual ICollection<PackageViewModel> Pending { get; set; }
 
-        public ICollection<PackageViewModel> Shipped { get; set; }
+        public virtual ICollection<PackageViewModel> Shipped { get; set; }
 
-        public ICollection<PackageViewModel> Delivered { get; set; }
+        public virtual ICollection<PackageViewModel> Delivered { get; set; }
     }
 }

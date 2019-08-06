@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Panda2.Data.Common.Models;
 
-namespace Panda2.Models
+namespace Panda2.Data.Models
 {
-    public class Package
+    public class Package : BaseModel<string>
     {
-        public string Id { get; set; }
-
         [Required]
         public string Description { get; set; }
 

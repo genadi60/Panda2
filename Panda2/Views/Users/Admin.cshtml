@@ -1,4 +1,4 @@
-﻿@model Panda2.Models.ViewModels.AdministratorViewModel
+﻿@model Panda2.Data.Models.ViewModels.AdministratorViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -77,7 +77,7 @@
                                         <td class="col-md-8">
                                             <p class="card-text">@package.Description</p>
                                         </td>
-                                        @if (package.Recipient.Equals(Model.Name) && package.Status.Equals("Delivered"))
+                                        @if (package.Recipient.Equals(Model.Name) && package.StatusName.Equals("Delivered"))
                                         {
                                             <td class="col-md-4"><a asp-controller="Receipts" asp-action="Create" asp-route-id="@package.Id" class="btn bg-panda text-white">Acquire</a></td>
                                         }

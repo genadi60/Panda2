@@ -105,15 +105,19 @@ namespace Panda2.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Panda2.Models.Package", b =>
+            modelBuilder.Entity("Panda2.Data.Models.Package", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedOn");
 
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<DateTime?>("EstimatedDeliveryDate");
+
+                    b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<string>("RecipientId")
                         .IsRequired();
@@ -134,7 +138,7 @@ namespace Panda2.Data.Migrations
                     b.ToTable("Packages");
                 });
 
-            modelBuilder.Entity("Panda2.Models.PandaUser", b =>
+            modelBuilder.Entity("Panda2.Data.Models.PandaUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -194,7 +198,7 @@ namespace Panda2.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Panda2.Models.PandaUserRole", b =>
+            modelBuilder.Entity("Panda2.Data.Models.PandaUserRole", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -218,15 +222,19 @@ namespace Panda2.Data.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Panda2.Models.Receipt", b =>
+            modelBuilder.Entity("Panda2.Data.Models.Receipt", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedOn");
 
                     b.Property<decimal>("Fee")
                         .HasColumnType("DECIMAL(18, 2)");
 
                     b.Property<DateTime>("IssuedOn");
+
+                    b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<string>("PackageId")
                         .IsRequired();
@@ -244,11 +252,15 @@ namespace Panda2.Data.Migrations
                     b.ToTable("Receipts");
                 });
 
-            modelBuilder.Entity("Panda2.Models.Status", b =>
+            modelBuilder.Entity("Panda2.Data.Models.Status", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -260,7 +272,7 @@ namespace Panda2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUserRole")
+                    b.HasOne("Panda2.Data.Models.PandaUserRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -268,7 +280,7 @@ namespace Panda2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUser")
+                    b.HasOne("Panda2.Data.Models.PandaUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -276,7 +288,7 @@ namespace Panda2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUser")
+                    b.HasOne("Panda2.Data.Models.PandaUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -284,12 +296,12 @@ namespace Panda2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUserRole")
+                    b.HasOne("Panda2.Data.Models.PandaUserRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Panda2.Models.PandaUser")
+                    b.HasOne("Panda2.Data.Models.PandaUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -297,41 +309,41 @@ namespace Panda2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUser")
+                    b.HasOne("Panda2.Data.Models.PandaUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Panda2.Models.Package", b =>
+            modelBuilder.Entity("Panda2.Data.Models.Package", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUser", "Recipient")
+                    b.HasOne("Panda2.Data.Models.PandaUser", "Recipient")
                         .WithMany("Packages")
                         .HasForeignKey("RecipientId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Panda2.Models.Status", "Status")
+                    b.HasOne("Panda2.Data.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Panda2.Models.PandaUser", b =>
+            modelBuilder.Entity("Panda2.Data.Models.PandaUser", b =>
                 {
-                    b.HasOne("Panda2.Models.PandaUserRole", "Role")
+                    b.HasOne("Panda2.Data.Models.PandaUserRole", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Panda2.Models.Receipt", b =>
+            modelBuilder.Entity("Panda2.Data.Models.Receipt", b =>
                 {
-                    b.HasOne("Panda2.Models.Package", "Package")
+                    b.HasOne("Panda2.Data.Models.Package", "Package")
                         .WithOne()
-                        .HasForeignKey("Panda2.Models.Receipt", "PackageId")
+                        .HasForeignKey("Panda2.Data.Models.Receipt", "PackageId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Panda2.Models.PandaUser", "Recipient")
+                    b.HasOne("Panda2.Data.Models.PandaUser", "Recipient")
                         .WithMany("Receipts")
                         .HasForeignKey("RecipientId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Panda2.Models
+namespace Panda2.Data.Models
 {
     public class PandaUserRole : IdentityRole
     {

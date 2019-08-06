@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography;
+using AutoMapper;
+using Panda2.Services.Mapping;
 
-namespace Panda2.Models.ViewModels
+namespace Panda2.Data.Models.ViewModels
 {
-    public class UserViewModel
+    public class UserViewModel : IMapFrom<PandaUser>
     {
         public UserViewModel()
         {
@@ -15,8 +17,8 @@ namespace Panda2.Models.ViewModels
 
         public string Username { get; set; }
 
-        public ICollection<PackageViewModel> Packages { get; set; }
+        public virtual ICollection<PackageViewModel> Packages { get; set; }
 
-        public ICollection<ReceiptViewModel> Receipts { get; set; }
+        public virtual ICollection<ReceiptViewModel> Receipts { get; set; }
     }
 }

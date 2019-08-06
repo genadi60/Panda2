@@ -1,4 +1,4 @@
-namespace Panda2.Models.ViewModels
+namespace Panda2.Data.Models.ViewModels
 {
     public class ErrorViewModel
     {

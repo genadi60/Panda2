@@ -1,7 +1,7 @@
 ﻿using Panda2.Data;
-using Panda2.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Panda2.Data.Models;
 
 namespace Panda2.Utilities
 {

@@ -1,14 +1,9 @@
-﻿using System.Net;
-using MediaBrowser.Controller.Net;
+﻿using MediaBrowser.Controller.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Panda2.Models;
-using Panda2.Services.Contracts;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Authentication;
-using Microsoft.AspNetCore.Http.Features.Authentication;
+using Panda2.Data.Models;
+using Panda2.Data.Models.ViewModels;
+using Panda2.Services.Data.Contracts;
 
 namespace Panda2.Controllers
 {
@@ -57,12 +52,12 @@ namespace Panda2.Controllers
             
             if (role != null && role.Name.Equals("Administrator"))
             {
-                var adminModel = _usersService.GetAdministratorViewModel();
+                var adminModel = _usersService.GetAdministratorViewModel<PackageViewModel>();
                 adminModel.Name = User.Identity.Name;
                 return View("Admin", adminModel);
             }
 
-            var userModel = _usersService.GetUserViewModelByIdWithPackages(id);
+            var userModel = _usersService.GetUserViewModelByIdWithPackages<UserViewModel, PackageViewModel>(id);
             return View("Logged-In", userModel);
         }
     }

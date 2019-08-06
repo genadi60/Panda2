@@ -1,9 +1,9 @@
 ﻿using MediaBrowser.Controller.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Panda2.Models;
-using Panda2.Models.ViewModels;
-using Panda2.Services.Contracts;
+using Panda2.Data.Models;
+using Panda2.Data.Models.ViewModels;
+using Panda2.Services.Data.Contracts;
 
 namespace Panda2.Controllers
 {
@@ -22,7 +22,7 @@ namespace Panda2.Controllers
         public IActionResult Index()
         {
             var id = _userManager.GetUserId(User);
-            var model = _receiptsService.GetUserViewModelByIdWithReceipts(id);
+            var model = _receiptsService.GetUserViewModelByIdWithReceipts<UserViewModel, ReceiptViewModel>(id);
             return View(model);
         }
 
@@ -34,8 +34,7 @@ namespace Panda2.Controllers
             {
                 return View(model);
             }
-            var errorModel = new ErrorViewModel();
-            errorModel.ErrorMessage = "Access denied.";
+            var errorModel = new ErrorViewModel { ErrorMessage = "Access denied." };
             return RedirectToAction("Error", "Home", errorModel);
         }
 
@@ -43,15 +42,14 @@ namespace Panda2.Controllers
         public IActionResult Create(string id)
         {
             var userId = _userManager.GetUserId(User);
-            bool isCreated = _receiptsService.Create(id, userId);
+            var result = _receiptsService.Create(id, userId).Result;
 
-            if (isCreated)
+            if (result == 2)
             {
                 return RedirectToAction("Index");
             }
 
-            var errorModel = new ErrorViewModel();
-            errorModel.ErrorMessage = "Access denied.";
+            var errorModel = new ErrorViewModel { ErrorMessage = "Access denied." };
             return RedirectToAction("Error", "Home", errorModel);
         }
     }

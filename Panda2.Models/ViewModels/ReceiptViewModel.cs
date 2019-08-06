@@ -1,6 +1,10 @@
-﻿namespace Panda2.Models.ViewModels
+﻿using System;
+using System.Globalization;
+using Panda2.Services.Mapping;
+
+namespace Panda2.Data.Models.ViewModels
 {
-    public class ReceiptViewModel
+    public class ReceiptViewModel : IMapFrom<Receipt>
     {
         public string Id { get; set; }
 
@@ -18,6 +22,6 @@
         public string PackageDescription { get; set; }
 
         public string PackageId { get; set; }
-        public PackageViewModel Package { get; set; }
+        public virtual PackageViewModel Package { get; set; }
     }
 }

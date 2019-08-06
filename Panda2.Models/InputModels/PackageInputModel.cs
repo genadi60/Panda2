@@ -1,4 +1,4 @@
-﻿namespace Panda2.Models.InputModels
+﻿namespace Panda2.Data.Models.InputModels
 {
     public class PackageInputModel
     {
