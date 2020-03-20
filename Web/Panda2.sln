@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.89
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2", "Panda2.csproj", "{CD52B12C-5E35-41F1-BFBE-94FEC8131418}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{7CEDCEF4-B42F-4F35-B85B-FD8071FCE50A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{AFCCAC11-9E31-4317-A5E3-7BB76BE8F657}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Panda2.Common", "Panda2.Common", "{624972BE-2263-4F11-9DAE-F54536A2B951}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F7B30493-2FF1-4CDE-A2CC-2A072E33E584}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Data", "..\Data\Panda2.Data\Panda2.Data.csproj", "{56704EB6-85DE-47DC-87CD-87DC122F6AF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Data.Common", "..\Data\Panda2.Data.Common\Panda2.Data.Common.csproj", "{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Data.Models", "..\Data\Panda2.Data.Models\Panda2.Data.Models.csproj", "{80CC3C16-5E38-4170-8F85-9714423BAF24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Common", "..\Panda2.Common\Panda2.Common.csproj", "{D8881C11-AEEE-4DBD-9999-A7E61871777E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Services", "..\Services\Panda2.Services\Panda2.Services.csproj", "{1006A1C0-2DEE-4195-B80A-488A157C2CC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Services.Data", "..\Services\Panda2.Services.Data\Panda2.Services.Data.csproj", "{C5246446-CE9A-4943-8254-4590CD6016EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Services.Mapping", "..\Services\Panda2.Services.Mapping\Panda2.Services.Mapping.csproj", "{E67DBE8C-56CC-4B08-B128-BE059BB37FA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda2.Services.Messaging", "..\Services\Panda2.Services.Messaging\Panda2.Services.Messaging.csproj", "{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD52B12C-5E35-41F1-BFBE-94FEC8131418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD52B12C-5E35-41F1-BFBE-94FEC8131418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD52B12C-5E35-41F1-BFBE-94FEC8131418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD52B12C-5E35-41F1-BFBE-94FEC8131418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56704EB6-85DE-47DC-87CD-87DC122F6AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56704EB6-85DE-47DC-87CD-87DC122F6AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56704EB6-85DE-47DC-87CD-87DC122F6AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56704EB6-85DE-47DC-87CD-87DC122F6AF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CC3C16-5E38-4170-8F85-9714423BAF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CC3C16-5E38-4170-8F85-9714423BAF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CC3C16-5E38-4170-8F85-9714423BAF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CC3C16-5E38-4170-8F85-9714423BAF24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8881C11-AEEE-4DBD-9999-A7E61871777E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8881C11-AEEE-4DBD-9999-A7E61871777E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8881C11-AEEE-4DBD-9999-A7E61871777E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8881C11-AEEE-4DBD-9999-A7E61871777E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1006A1C0-2DEE-4195-B80A-488A157C2CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1006A1C0-2DEE-4195-B80A-488A157C2CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1006A1C0-2DEE-4195-B80A-488A157C2CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1006A1C0-2DEE-4195-B80A-488A157C2CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5246446-CE9A-4943-8254-4590CD6016EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5246446-CE9A-4943-8254-4590CD6016EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5246446-CE9A-4943-8254-4590CD6016EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5246446-CE9A-4943-8254-4590CD6016EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67DBE8C-56CC-4B08-B128-BE059BB37FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67DBE8C-56CC-4B08-B128-BE059BB37FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67DBE8C-56CC-4B08-B128-BE059BB37FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67DBE8C-56CC-4B08-B128-BE059BB37FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD52B12C-5E35-41F1-BFBE-94FEC8131418} = {7CEDCEF4-B42F-4F35-B85B-FD8071FCE50A}
+		{56704EB6-85DE-47DC-87CD-87DC122F6AF4} = {AFCCAC11-9E31-4317-A5E3-7BB76BE8F657}
+		{C461D1D7-2BB3-40EE-9098-AEC0B1CFEC77} = {AFCCAC11-9E31-4317-A5E3-7BB76BE8F657}
+		{80CC3C16-5E38-4170-8F85-9714423BAF24} = {AFCCAC11-9E31-4317-A5E3-7BB76BE8F657}
+		{D8881C11-AEEE-4DBD-9999-A7E61871777E} = {624972BE-2263-4F11-9DAE-F54536A2B951}
+		{1006A1C0-2DEE-4195-B80A-488A157C2CC9} = {F7B30493-2FF1-4CDE-A2CC-2A072E33E584}
+		{C5246446-CE9A-4943-8254-4590CD6016EE} = {F7B30493-2FF1-4CDE-A2CC-2A072E33E584}
+		{E67DBE8C-56CC-4B08-B128-BE059BB37FA7} = {F7B30493-2FF1-4CDE-A2CC-2A072E33E584}
+		{B5B8DDB9-436D-467A-A153-DA3F36AD8E0E} = {F7B30493-2FF1-4CDE-A2CC-2A072E33E584}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {156EA64F-C7EA-4F82-A0FC-09B1BD3FA76B}
+	EndGlobalSection
+EndGlobal
